@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import './globals.css';
+import { ReactNode } from 'react';
 import '../styles/globals.css';
 
 export const metadata = {
@@ -6,24 +7,13 @@ export const metadata = {
   description: 'A simple portfolio website',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <header>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
-        </header>
-        <main>{children}</main>
-        <footer>
-          <p>© 2024 My Portfolio. All rights reserved.</p>
+      <body className="flex flex-col min-h-screen">
+        <main className="flex-grow">{children}</main>
+        <footer className="bg-gray-800 text-white text-center py-4">
+          <p>&copy; {new Date().getFullYear()} Rabi Hassan. All rights reserved.</p>
         </footer>
       </body>
     </html>
